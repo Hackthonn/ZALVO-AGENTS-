@@ -1,0 +1,8 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "paths": {
+      "@zalvo/ink": ["src/types/zalvo-ink.d.ts"]
+    }
+  }
+}

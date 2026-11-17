@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+# Run Python in this checkout's environment: `scripts/zalvo-python ARGS...`.
+#
+# A GitHub Actions job runs the interpreter setup-pm exported as ZALVO_PYTHON,
+# so a recipe never re-runs setup on a runner. Anywhere else ZALVO_PYTHON may
+# be inherited from a wrapped `zalvo` (a release venv without the dev tools),
+# so scripts/run-in-zalvo-env applies (and if stale, syncs) the environment
+# `source ./activate` gives a shell.
+set -euo pipefail
+
+if [ "${GITHUB_ACTIONS:-}" = true ] && [ -z "${__ZALVO_ACTIVATED:-}" ] && [ -n "${ZALVO_PYTHON:-}" ] \
+    && [ -x "$ZALVO_PYTHON" ]; then
+    exec "$ZALVO_PYTHON" "$@"
+fi
+exec "$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)/run-in-zalvo-env" python "$@"
