@@ -61,8 +61,8 @@ def _guest_state() -> dict:
 
 def _account_state() -> dict:
     return {
-        "auth_method": "oauth_device_code", "client_id": "zalvo-cli",
-        "access_token": _jwt(sub="nas_user:real", client_id="zalvo-cli", account_tier="standard", paid_access=True),
+        "auth_method": "oauth_device_code", "client_id": "hermes-cli",
+        "access_token": _jwt(sub="nas_user:real", client_id="hermes-cli", account_tier="standard", paid_access=True),
         "refresh_token": "rt_live", "expires_at": "2030-01-01T00:00:00+00:00",
         "portal_base_url": "https://portal.nousresearch.com", "inference_base_url": "https://inference-api.nousresearch.com/v1",
     }

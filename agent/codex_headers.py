@@ -48,7 +48,7 @@ def codex_cloudflare_headers(access_token: str, *, base_url: str = CODEX_AUX_BAS
         from zalvo_cli.version_info import get_version_info
         headers = {
             "User-Agent": f"ZalvoAgent/{get_version_info().base_version}",
-            "originator": "zalvo-agent",
+            "originator": "hermes-agent",  # OpenAI-registered harness id (upstream), not branding
         }
     else:
         headers = {"User-Agent": "codex_cli_rs/0.0.0 (ZALVO Agent)", "originator": "codex_cli_rs"}

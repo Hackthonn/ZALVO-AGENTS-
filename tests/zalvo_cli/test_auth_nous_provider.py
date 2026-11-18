@@ -136,7 +136,7 @@ def _setup_nous_auth(
             "nous": {
                 "portal_base_url": "https://portal.example.com",
                 "inference_base_url": "https://inference.example.com/v1",
-                "client_id": "zalvo-cli",
+                "client_id": "hermes-cli",
                 "token_type": "Bearer",
                 "scope": scope,
                 "access_token": access_token,
@@ -229,7 +229,7 @@ def test_resolve_nous_runtime_credentials_invoke_jwt_is_idempotent(
             "nous": {
                 "portal_base_url": "https://portal.nousresearch.com",
                 "inference_base_url": "https://inference-api.nousresearch.com/v1",
-                "client_id": "zalvo-cli",
+                "client_id": "hermes-cli",
                 "token_type": "Bearer",
                 "scope": auth_mod.DEFAULT_NOUS_SCOPE,
                 "access_token": token,
@@ -608,7 +608,7 @@ def _full_state_fixture() -> dict:
     return {
         "portal_base_url": "https://portal.example.com",
         "inference_base_url": "https://inference.example.com/v1",
-        "client_id": "zalvo-cli",
+        "client_id": "hermes-cli",
         "scope": "inference:invoke",
         "token_type": "Bearer",
         "access_token": token,
@@ -700,7 +700,7 @@ def test_refresh_token_reuse_detection_surfaces_actionable_message():
         _refresh_access_token(
             client=_FakeClient(),
             portal_base_url="https://portal.nousresearch.com",
-            client_id="zalvo-cli",
+            client_id="hermes-cli",
             refresh_token="rt_consumed_elsewhere",
         )
 
@@ -760,7 +760,7 @@ def test_refresh_token_exchange_error_classification(
         _refresh_access_token(
             client=_FakeClient(),
             portal_base_url="https://portal.nousresearch.com",
-            client_id="zalvo-cli",
+            client_id="hermes-cli",
             refresh_token="refresh-still-valid",
         )
 
@@ -863,7 +863,7 @@ def test_refresh_token_exchange_sends_refresh_token_header():
     payload = _refresh_access_token(
         client=client,
         portal_base_url="https://portal.nousresearch.com",
-        client_id="zalvo-cli",
+        client_id="hermes-cli",
         refresh_token="refresh-1",
     )
 
@@ -873,7 +873,7 @@ def test_refresh_token_exchange_sends_refresh_token_header():
     assert client.kwargs["headers"]["x-nous-refresh-token"] == "refresh-1"
     assert client.kwargs["data"] == {
         "grant_type": "refresh_token",
-        "client_id": "zalvo-cli",
+        "client_id": "hermes-cli",
     }
 
 
@@ -1006,7 +1006,7 @@ def test_try_import_shared_rehydrates_on_success(shared_store_env, monkeypatch):
     assert result["agent_key"] == fresh_jwt
     # Preserved from shared state
     assert result["portal_base_url"] == "https://portal.example.com"
-    assert result["client_id"] == "zalvo-cli"
+    assert result["client_id"] == "hermes-cli"
 
 class TestStalePortalBaseUrlMigration:
     """_migrate_stale_nous_portal_url auto-corrects stale portal_base_url on load."""
@@ -1108,7 +1108,7 @@ def test_poll_for_token_timeout_raises_actionable_message():
         auth_mod._poll_for_token(
             client=cast(httpx.Client, _PendingClient()),
             portal_base_url="https://portal.nousresearch.com",
-            client_id="zalvo-cli",
+            client_id="hermes-cli",
             device_code="device",
             expires_in=1,
             poll_interval=1,

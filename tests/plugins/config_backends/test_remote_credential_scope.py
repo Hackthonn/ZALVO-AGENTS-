@@ -25,7 +25,7 @@ def _profile(home: Path, portal: str) -> Path:
     home.mkdir(parents=True, exist_ok=True)
     (home / ".env").write_text(f"ZALVO_PORTAL_BASE_URL={portal}\n", encoding="utf-8")
     nous = {"access_token": "expired-access", "refresh_token": f"refresh-for-{portal}",
-            "client_id": "zalvo-cli-vps", "portal_base_url": portal,
+            "client_id": "hermes-cli-vps", "portal_base_url": portal,
             "expires_at": "2000-01-01T00:00:00+00:00"}
     (home / "auth.json").write_text(json.dumps(
         {"version": 1, "active_provider": "nous", "providers": {"nous": nous}}), encoding="utf-8")

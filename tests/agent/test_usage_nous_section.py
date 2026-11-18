@@ -23,7 +23,7 @@ _PAYLOAD = _account_payload(allowed=True, subscription=None, subscription_credit
 def portal(monkeypatch):
     """A signed-in profile whose portal answers ``_PAYLOAD``; records each account fetch's token and any refresh."""
     seen = {"tokens": [], "refreshed": 0}
-    state = {"access_token": _jwt({"sub": "u", "exp": int(time.time()) + 900}), "client_id": "zalvo-cli",
+    state = {"access_token": _jwt({"sub": "u", "exp": int(time.time()) + 900}), "client_id": "hermes-cli",
              "portal_base_url": "https://portal.example.test",
              "expires_at": (datetime.now(UTC) + timedelta(minutes=15)).isoformat()}
 

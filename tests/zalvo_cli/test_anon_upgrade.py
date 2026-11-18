@@ -90,7 +90,7 @@ class FakePortal:
             if self.on_token is not None:
                 self.on_token()
             return httpx.Response(200, json={
-                "access_token": _jwt(sub="nas_user:9", client_id="zalvo-cli", account_tier="free", email=EMAIL),
+                "access_token": _jwt(sub="nas_user:9", client_id="hermes-cli", account_tier="free", email=EMAIL),
                 "refresh_token": REFRESH_TOKEN, "token_type": "Bearer", "expires_in": 900,
                 "scope": "inference:invoke", "inference_base_url": self.token_inference_url})
         return httpx.Response(500, json={"error": f"unexpected {path}"})
@@ -188,9 +188,9 @@ class TestUpgrade:
         from zalvo_cli import auth_nous
         from zalvo_cli.auth import PROVIDER_REGISTRY
         anon_auth.ensure_portal_identity(explicit=True)
-        account = {"access_token": _jwt(sub="nas_user:9", client_id="zalvo-cli", account_tier="free", email=EMAIL),
+        account = {"access_token": _jwt(sub="nas_user:9", client_id="hermes-cli", account_tier="free", email=EMAIL),
                    "refresh_token": REFRESH_TOKEN, "portal_base_url": PORTAL, "inference_base_url": INFERENCE,
-                   "client_id": "zalvo-cli", "expires_in": 900}
+                   "client_id": "hermes-cli", "expires_in": 900}
         monkeypatch.setattr(auth_nous, "_offer_shared_nous_import", lambda timeout: None)
         monkeypatch.setattr(auth_nous, "_nous_device_code_login", lambda **kw: dict(account))
         monkeypatch.setattr(auth_nous, "_pick_nous_model_after_login", lambda *a: None)

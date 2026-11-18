@@ -23,9 +23,9 @@ __all__ = ["free_account", "portal"]
 
 
 def _account() -> dict:
-    return {"access_token": _jwt(sub="nas_user:9", client_id="zalvo-cli", account_tier="free", email=EMAIL),
+    return {"access_token": _jwt(sub="nas_user:9", client_id="hermes-cli", account_tier="free", email=EMAIL),
             "refresh_token": REFRESH_TOKEN, "portal_base_url": PORTAL, "inference_base_url": INFERENCE,
-            "client_id": "zalvo-cli", "expires_in": 900,
+            "client_id": "hermes-cli", "expires_in": 900,
             "expires_at": (datetime.now(UTC) + timedelta(minutes=15)).isoformat()}
 
 

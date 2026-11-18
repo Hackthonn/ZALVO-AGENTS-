@@ -125,7 +125,7 @@ def _expired_nous_auth() -> dict:
     return {"version": 1, "active_provider": "nous", "providers": {"nous": {
         "portal_base_url": "https://portal.nousresearch.com",
         "inference_base_url": "https://inference-api.nousresearch.com/v1",
-        "client_id": "zalvo-cli", "token_type": "Bearer", "scope": "inference:invoke",
+        "client_id": "hermes-cli", "token_type": "Bearer", "scope": "inference:invoke",
         "access_token": _jwt({"sub": "e2e-user", "scope": "inference:invoke", "exp": past}),
         "refresh_token": "refresh-e2e", "obtained_at": iso, "expires_in": 3600, "expires_at": iso,
         "agent_key": None, "agent_key_id": None, "agent_key_expires_at": None,

@@ -33,7 +33,7 @@ def _state(tag: str, refresh_token: str, *, issued: int, ttl: int = 3000, sub: s
            token: str | None = None) -> dict:
     token = token or _jwt(tag, issued + ttl, issued=issued, sub=sub)
     return {
-        "portal_base_url": auth_mod.DEFAULT_NOUS_PORTAL_URL, "client_id": "zalvo-cli",
+        "portal_base_url": auth_mod.DEFAULT_NOUS_PORTAL_URL, "client_id": "hermes-cli",
         "token_type": "Bearer", "scope": auth_mod.DEFAULT_NOUS_SCOPE,
         "access_token": token, "refresh_token": refresh_token, "obtained_at": _iso(issued),
         "expires_in": ttl, "expires_at": _iso(issued + ttl),

@@ -1010,7 +1010,7 @@ def test_load_pool_mirrors_nous_invoke_jwt_agent_key_runtime_api_key(tmp_path, m
                 "nous": {
                     "portal_base_url": "https://portal.example.com",
                     "inference_base_url": "https://inference.example.com/v1",
-                    "client_id": "zalvo-cli",
+                    "client_id": "hermes-cli",
                     "token_type": "Bearer",
                     "scope": "inference:invoke",
                     "access_token": token,
@@ -1453,7 +1453,7 @@ def test_nous_seed_from_singletons_preserves_obtained_at_timestamps(tmp_path, mo
                 "nous": {
                     "access_token": "at_XXXXXXXX",
                     "refresh_token": "rt_YYYYYYYY",
-                    "client_id": "zalvo-cli",
+                    "client_id": "hermes-cli",
                     "portal_base_url": "https://portal.nousresearch.com",
                     "inference_base_url": "https://inference.nousresearch.com/v1",
                     "token_type": "Bearer",

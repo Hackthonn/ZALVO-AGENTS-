@@ -131,7 +131,7 @@ def _expired_invoke_jwt() -> str:
     ("nous_state", "expected_code"),
     [
         (None, "nous_auth_missing"),
-        ({"client_id": "zalvo-cli", "scope": "inference:invoke", "access_token": _expired_invoke_jwt(),
+        ({"client_id": "hermes-cli", "scope": "inference:invoke", "access_token": _expired_invoke_jwt(),
           "refresh_token": "", "expires_at": "2026-02-01T00:00:00+00:00"}, "nous_auth_missing_refresh_token"),
     ],
     ids=["not_logged_in", "expired_jwt_without_refresh_token"],

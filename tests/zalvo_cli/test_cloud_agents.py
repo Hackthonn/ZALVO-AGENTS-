@@ -69,7 +69,7 @@ def client(tmp_path, monkeypatch, portal):
     expires = (datetime.now(UTC) + timedelta(hours=1)).isoformat()
     token = _jwt()
     (home / "auth.json").write_text(json.dumps({"version": 1, "active_provider": "nous", "providers": {"nous": {
-        "portal_base_url": portal[2], "client_id": "zalvo-cli", "token_type": "Bearer",
+        "portal_base_url": portal[2], "client_id": "hermes-cli", "token_type": "Bearer",
         "access_token": token, "refresh_token": "rt", "expires_at": expires, "obtained_at": expires,
         "agent_key": token, "agent_key_expires_at": expires}}}))
     app = FastAPI()
